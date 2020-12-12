@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BookStore.Domain.Models;
 
 namespace BookStore.Domain.Interfaces
 {
-    class ICategoryRepository
+    public interface ICategoryRepository: IRepository<Category>
     {
+
     }
 }
