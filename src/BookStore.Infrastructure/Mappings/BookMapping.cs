@@ -8,7 +8,7 @@ namespace BookStore.Infrastructure.Mappings
     {
         public void Configure(EntityTypeBuilder<Book> builder)
         {
-            builder.HasKey(b => b.Id);
+            builder.HasKey(b => b.Id); // Primary key
 
             builder.Property(b => b.Name)
                 .IsRequired()
