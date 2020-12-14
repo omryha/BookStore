@@ -9,6 +9,7 @@ namespace BookStore.Domain.Interfaces
     {
         Task<IEnumerable<Book>> GetAll();
         Task<Book> GetById(int id);
+        Task<Book> Add(Book book);
         Task<Book> Update(Book book);
         Task<bool> Remove(Book book);
         Task<IEnumerable<Book>> GetBooksByCategory(int categoryId);

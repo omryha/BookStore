@@ -14,12 +14,16 @@ namespace BookStore.Infrastructure.Repositories
 
         public override async Task<List<Book>> GetAll()
         {
-            return await Db.Books.AsNoTracking().Include(b => b.Category).OrderBy(b => b.Name).ToListAsync();
+            return await Db.Books.AsNoTracking().Include(b => b.Category)
+                .OrderBy(b => b.Name)
+                .ToListAsync();
         }
 
         public override async Task<Book> GetById(int id)
         {
-            return await Db.Books.AsNoTracking().Include(b => b.Category).Where(b => b.Id == id).FirstOrDefaultAsync();
+            return await Db.Books.AsNoTracking().Include(b => b.Category)
+                .Where(b => b.Id == id)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Book>> GetBooksByCategory(int categoryId)
@@ -29,7 +33,13 @@ namespace BookStore.Infrastructure.Repositories
 
         public async Task<IEnumerable<Book>> SearchBookWithCategory(string searchedValue)
         {
-            return await Db.Books.AsNoTracking().Include(b => b.Category).Where(b => b.Name.Contains(searchedValue) || b.Author.Contains(searchedValue) || b.Description.Contains(searchedValue) || b.Category.Name.Contains(searchedValue)).ToListAsync();
+            return await Db.Books.AsNoTracking()
+                .Include(b => b.Category)
+                .Where(b => b.Name.Contains(searchedValue) ||
+                            b.Author.Contains(searchedValue) ||
+                            b.Description.Contains(searchedValue) ||
+                            b.Category.Name.Contains(searchedValue))
+                .ToListAsync();
         }
     }
 }

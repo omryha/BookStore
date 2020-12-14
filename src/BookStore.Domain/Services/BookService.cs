@@ -6,11 +6,10 @@ using BookStore.Domain.Models;
 
 namespace BookStore.Domain.Services
 {
-    public class BookService: IBookService
+    public class BookService : IBookService
     {
         private readonly IBookRepository _bookRepository;
-        
-        // Constructor
+
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository = bookRepository;
@@ -28,19 +27,19 @@ namespace BookStore.Domain.Services
 
         public async Task<Book> Add(Book book)
         {
-            if (_bookRepository.Search(b => b.Name == book.Name).Result.Any()) return null;
+            if (_bookRepository.Search(b => b.Name == book.Name).Result.Any())
+                return null;
 
             await _bookRepository.Add(book);
-
             return book;
         }
 
         public async Task<Book> Update(Book book)
         {
-            if (_bookRepository.Search(b => b.Name == book.Name && b.Id != book.Id).Result.Any()) return null;
+            if (_bookRepository.Search(b => b.Name == book.Name && b.Id != book.Id).Result.Any())
+                return null;
 
             await _bookRepository.Update(book);
-
             return book;
         }
 
@@ -69,6 +68,5 @@ namespace BookStore.Domain.Services
         {
             _bookRepository?.Dispose();
         }
-
     }
 }
