@@ -12,13 +12,13 @@ export class ConfirmationDialogService {
     message: string,
     btnOkText: string = 'Ok',
     btnCancelText: string = 'Cancel',
-    dialogZie: 'sm' | 'lg' = 'sm'
+    dialogSize: 'sm' | 'lg' = 'sm'
   ): Promise<boolean> {
-    const modalRef = this.modalService.open(ConfirmationDialogComponent, { size: dialogZie });
+    const modalRef = this.modalService.open(ConfirmationDialogComponent, { size: dialogSize });
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.message = message;
     modalRef.componentInstance.btnOkText = btnOkText;
-    modalRef.componentInstance.btnCancel = btnCancelText;
+    modalRef.componentInstance.btnCancelText = btnCancelText;
 
     return modalRef.result;
   }
